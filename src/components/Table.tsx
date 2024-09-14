@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { QueryKeys, QueryStatus } from "../query/consts";
+import { QueryKeys, QueryStatus } from "../consts";
 import { fetchUsers } from "../query/fetchData";
 import { errorHandler } from "../query/errorHandler";
 import UserRow from "../elements/UserRow";
@@ -10,7 +10,7 @@ const Table: React.FC = (): JSX.Element => {
 
 
     return errorHandler(status as QueryStatus, (
-        <div>  
+        <div>
             <SearchBar></SearchBar>
             <table>
                 <tr>

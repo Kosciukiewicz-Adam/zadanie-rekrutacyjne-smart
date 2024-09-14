@@ -1,4 +1,4 @@
-import { QueryStatus } from "./consts";
+import { QueryStatus } from "../consts";
 
 export const errorHandler = (status: QueryStatus, content: JSX.Element): JSX.Element => {
     switch (status) {
