@@ -1,0 +1,19 @@
+.SearchBar {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+
+    .heading {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .inputWrapper {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .label {
+        margin: 0;
+    }
+}

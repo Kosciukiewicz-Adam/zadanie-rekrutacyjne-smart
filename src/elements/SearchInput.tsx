@@ -1,21 +1,26 @@
 import { SearchTermsKeyNames } from '../consts';
+import "../styles/elements/SearchInput.scss";
 
 interface Props {
-    key: SearchTermsKeyNames,
-    value: string;
     handleValueChange: (key: SearchTermsKeyNames, value: string) => void;
     handleValueClear: (key: SearchTermsKeyNames) => void;
+    keyName: SearchTermsKeyNames,
+    value: string;
+    label: string;
 }
 
-const SearchInput: React.FC<Props> = ({ key, value, handleValueChange, handleValueClear }): JSX.Element => {
+const SearchInput: React.FC<Props> = ({ keyName, value, label, handleValueChange, handleValueClear }): JSX.Element => {
 
     return (
-        <div className=''>
-            <input type="text"
-                onChange={(event) => handleValueChange(key, event.target.value)}
-                value={value}
-            />
-            <p>clear</p>
+        <div className='SearchInput'>
+            <p className='label'>{label}</p>
+            <div className='contentWrapper'>
+                <input type="text"
+                    onChange={(event) => handleValueChange(keyName, event.target.value)}
+                    value={value}
+                />
+                <p onClick={() => handleValueClear(keyName)} className='clearButton'>clear</p>
+            </div>
         </div>
     )
 };

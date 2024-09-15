@@ -4,20 +4,22 @@ import { SearchTermsKeyNames } from '../consts';
 import { SearchTermsKeys } from '../interfaces/SearchTermsKeys';
 import SearchInput from './SearchInput';
 import { changeKeyValue, clearKeyValue } from '../redux/searchTerms';
+import "../styles/elements/SearchBar.scss";
 
 const SearchBar: React.FC = (): JSX.Element => {
     const searchTermsValues: SearchTermsKeys = useSelector((state: RootState) => state.searchTerms)
     const dispatch = useDispatch();
 
-    const inputKeys = [
-        SearchTermsKeyNames.EMAIL,
-        SearchTermsKeyNames.NAME,
-        SearchTermsKeyNames.USERNAME,
-        SearchTermsKeyNames.PHONE,
+    const searchInputsValues: { keyName: SearchTermsKeyNames, label: string }[] = [
+        { keyName: SearchTermsKeyNames.NAME, label: "Name" },
+        { keyName: SearchTermsKeyNames.EMAIL, label: "Email" },
+        { keyName: SearchTermsKeyNames.USERNAME, label: "User name" },
+        { keyName: SearchTermsKeyNames.PHONE, label: "Phone number" },
     ];
 
     const handleValueChange = (key: SearchTermsKeyNames, value: string) => {
-        dispatch(changeKeyValue({ key: SearchTermsKeyNames.NAME, value }))
+        console.log(key, value)
+        dispatch(changeKeyValue({ key: key, value }))
     }
 
     const handleValueClear = (key: SearchTermsKeyNames) => {
@@ -26,11 +28,14 @@ const SearchBar: React.FC = (): JSX.Element => {
 
     return (
         <div className="SearchBar">
-            {inputKeys.map(key =>
-                <SearchInput
-                    {...{ handleValueChange, handleValueClear, key }}
-                    value={searchTermsValues[key]}
-                />)}
+            <p className='heading'>Search by:</p>
+            <div className='inputWrapper'>
+                {searchInputsValues.map(({ keyName, label }) =>
+                    <SearchInput
+                        {...{ handleValueChange, handleValueClear, keyName, label }}
+                        value={searchTermsValues[keyName]}
+                    />)}
+            </div>
         </div>
     )
 };
