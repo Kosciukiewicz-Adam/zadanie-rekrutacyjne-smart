@@ -48,13 +48,15 @@ const Table: React.FC = (): JSX.Element => {
         <div className="Table">
             <SearchBar></SearchBar>
             <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Username</th>
-                    <th>Phone</th>
-                </tr>
-                {filteredUsers?.map(user => <UserRow {...user} />)}
+                <tbody>
+                    <tr className="rowNames">
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Username</th>
+                        <th>Phone</th>
+                    </tr>
+                    {filteredUsers?.map(user => <UserRow {...user} key={user.name} />)}
+                </tbody>
             </table>
         </div>
     ))

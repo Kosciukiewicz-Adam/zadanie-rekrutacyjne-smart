@@ -1,3 +1,4 @@
+import SearchIcon from '../icons/SearchIcon';
 import { SearchTermsKeyNames } from '../consts';
 import "../styles/elements/SearchInput.scss";
 
@@ -15,6 +16,7 @@ const SearchInput: React.FC<Props> = ({ keyName, value, label, handleValueChange
         <div className='SearchInput'>
             <p className='label'>{label}</p>
             <div className='contentWrapper'>
+                <SearchIcon />
                 <input type="text"
                     onChange={(event) => handleValueChange(keyName, event.target.value)}
                     value={value}

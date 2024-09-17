@@ -1,19 +1,20 @@
 .SearchBar {
     display: flex;
     flex-direction: column;
-    padding: 0 20px;
 
     .heading {
         font-size: 20px;
         font-weight: 600;
+        padding-left: 20px;
     }
 
     .inputWrapper {
         display: flex;
-        flex-direction: row;
-    }
+        flex-direction: column;
+        justify-content: space-evenly;
 
-    .label {
-        margin: 0;
+        @media screen and (min-width:750px) {
+            flex-direction: row;
+        }
     }
 }

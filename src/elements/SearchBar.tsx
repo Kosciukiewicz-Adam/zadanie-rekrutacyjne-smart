@@ -18,7 +18,6 @@ const SearchBar: React.FC = (): JSX.Element => {
     ];
 
     const handleValueChange = (key: SearchTermsKeyNames, value: string) => {
-        console.log(key, value)
         dispatch(changeKeyValue({ key: key, value }))
     }
 
@@ -34,6 +33,7 @@ const SearchBar: React.FC = (): JSX.Element => {
                     <SearchInput
                         {...{ handleValueChange, handleValueClear, keyName, label }}
                         value={searchTermsValues[keyName]}
+                        key={keyName}
                     />)}
             </div>
         </div>

@@ -1,5 +1,5 @@
 import "../styles/components/Sidebar.scss";
-import UserIcon from "../assets/UserIcon";
+import UserIcon from "../icons/UserIcon";
 
 const Sidebar: React.FC = (): JSX.Element => (
     <div className="Sidebar">

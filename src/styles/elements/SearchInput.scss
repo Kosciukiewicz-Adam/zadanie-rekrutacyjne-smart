@@ -1,9 +1,22 @@
 @import "../settings.scss";
 
 .SearchInput {
-    width: 25%;
+    width: 100%;
     display: flex;
     flex-direction: column;
+
+    @media screen and (min-width:750px) {
+        width: 25%;
+    }
+
+    .SearchIcon {
+        width: 20px;
+        display: none;
+
+        @media screen and (min-width:990px) {
+            display: block;
+        }
+    }
 
     .contentWrapper {
         display: flex;
@@ -12,11 +25,24 @@
         justify-content: space-evenly;
     }
 
+    .label {
+        text-align: center;
+        display: block;
+        font-weight: bold;
+    }
+
     input {
         height: 30px;
         border-radius: 100vmax;
         border: none;
         background: $mainLight;
+        margin: 0 10px;
+        padding-left: 10px;
+        width: 70%;
+
+        @media screen and (min-width:990px) {
+            width: 50%;
+        }
     }
 
     .clearButton {
