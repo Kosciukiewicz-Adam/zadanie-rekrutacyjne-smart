@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { QueryKeys, QueryStatus } from "../consts";
+import { QueryKeys, QueryStatus, SearchTermsKeyNames } from "../consts";
 import { fetchUsers } from "../query/fetchData";
 import { errorHandler } from "../query/errorHandler";
 import UserRow from "../elements/UserRow";
@@ -15,18 +15,34 @@ const Table: React.FC = (): JSX.Element => {
     const { data, status } = useQuery(QueryKeys.USERS, fetchUsers);
 
     const filteredUsers: User[] = [];
+    const allSearchKeys = [
+        SearchTermsKeyNames.USERNAME,
+        SearchTermsKeyNames.EMAIL,
+        SearchTermsKeyNames.PHONE,
+        SearchTermsKeyNames.NAME,
+    ]
+
+    const checkIfValueMatchesSearchTerm = (key: SearchTermsKeyNames, value: string): boolean => {
+        const searchTerm = searchTermsValues[key].toLocaleLowerCase();
+        const searchTermLength = searchTerm.length;
+        const formatedValues = value.split(" ").map(part => part.slice(0, searchTermLength).toLocaleLowerCase());
+
+        if (!searchTermLength || formatedValues.some(part => part === searchTerm)) {
+            return true
+        }
+
+        return false;
+    }
 
     if (status === QueryStatus.SUCCESS) {
         data.forEach(user => {
+            const passesAllSearchConditions = allSearchKeys.every(searchKey => checkIfValueMatchesSearchTerm(searchKey, user[searchKey]));
 
-            //if (searchTermsValues.name === user.name) {
-            filteredUsers.push(user)
-            //}
+            if (passesAllSearchConditions) {
+                filteredUsers.push(user);
+            }
         })
     }
-
-
-
 
     return errorHandler(status as QueryStatus, (
         <div className="Table">
