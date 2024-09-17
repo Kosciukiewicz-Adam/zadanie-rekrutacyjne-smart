@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/zadanie-rekrutacyjne-smart/static/css/main.cc217f72.css",
+    "main.js": "/zadanie-rekrutacyjne-smart/static/js/main.da278315.js",
+    "index.html": "/zadanie-rekrutacyjne-smart/index.html",
+    "main.cc217f72.css.map": "/zadanie-rekrutacyjne-smart/static/css/main.cc217f72.css.map",
+    "main.da278315.js.map": "/zadanie-rekrutacyjne-smart/static/js/main.da278315.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cc217f72.css",
+    "static/js/main.da278315.js"
+  ]
+}
